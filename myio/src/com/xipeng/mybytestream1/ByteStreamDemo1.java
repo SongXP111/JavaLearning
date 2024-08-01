@@ -1,4 +1,4 @@
-package com.xipeng.mybytestream;
+package com.xipeng.mybytestream1;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
