@@ -1,17 +1,26 @@
 package com.xipeng.myobjectstream;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class Student implements Serializable {
+    // 加版本号
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     private String name;
     private int age;
+    // transient: 瞬态关键字，不会被序列化
+    private transient String address;
+
 
     public Student() {
     }
 
-    public Student(String name, int age) {
+    public Student(String name, int age, String address) {
         this.name = name;
         this.age = age;
+        this.address = address;
     }
 
     /**
@@ -46,7 +55,23 @@ public class Student implements Serializable {
         this.age = age;
     }
 
+    /**
+     * 获取
+     * @return address
+     */
+    public String getAddress() {
+        return address;
+    }
+
+    /**
+     * 设置
+     * @param address
+     */
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String toString() {
-        return "Student{name = " + name + ", age = " + age + "}";
+        return "Student{name = " + name + ", age = " + age + ", address = " + address + "}";
     }
 }

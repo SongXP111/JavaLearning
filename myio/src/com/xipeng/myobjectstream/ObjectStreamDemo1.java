@@ -13,7 +13,7 @@ public class ObjectStreamDemo1 {
         // writeObject
 
         // 1. 创建对象
-        Student s = new Student("zhangsan", 23);
+        Student s = new Student("zhangsan", 23, "天津");
 
         // 2. 创建序列化流对象
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("myio/src/com/xipeng/myobjectstream/objects.txt"));
