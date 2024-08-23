@@ -1,10 +1,10 @@
 package com.xipeng.myiotest1;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ArrayList;
+import java.sql.SQLOutput;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -33,7 +33,106 @@ public class Test1 {
 
         // 3. 通过正则表达式，把其中符合要求的数据获取出来
         ArrayList<String> familyNameTempList = getData(familyNameStr, "(.{4})(，|。)", 1);
-        System.out.println(familyNameTempList);
+        ArrayList<String> boyNameTempList = getData(boyNameStr, "([\\u4E00-\\u9FA5]{2})(、|。)", 1);
+        ArrayList<String> girlNameTempList = getData(girlNameStr, "(.. ){4}..", 0);
+
+        // 4. 处理数据
+        // 把每一个姓氏拆开，并添加到一个新的集合当中
+        ArrayList<String> familyNameList = new ArrayList<>();
+        for (String str : familyNameTempList) {
+            for (int i = 0; i < str.length(); i++) {
+                char c = str.charAt(i);
+                familyNameList.add(c + "");
+            }
+        }
+        System.out.println(familyNameList);
+
+        // 处理男生的名字
+        // 去重
+        ArrayList<String> boyNameList = new ArrayList<>();
+        for (String str : boyNameTempList) {
+            if (!boyNameList.contains(str)) {
+                boyNameList.add(str);
+            }
+        }
+        System.out.println(boyNameList);
+
+        // 处理女生的名字
+        // 每五个一组，用空格进行切割
+        ArrayList<String> girlNameList = new ArrayList<>();
+        for (String str : girlNameTempList) {
+            String[] arr = str.split(" ");
+            girlNameList.addAll(Arrays.asList(arr));
+        }
+        System.out.println(girlNameList);
+
+        // 5. 生成数据
+        // 姓名（唯一）-性别-年龄
+        ArrayList<String> list = getInfos(familyNameList, boyNameList, girlNameList, 70, 50);
+        Collections.shuffle(list);
+        System.out.println(list);
+
+        // 6. 写出数据
+        BufferedWriter bw = new BufferedWriter(new FileWriter("myiotest/src/com/xipeng/myiotest1/names.txt"));
+        for (String str : list) {
+            bw.write(str);
+            bw.newLine();
+        }
+        bw.close();
+    }
+
+    /*
+    * 获取男生和女生的信息：张三-男-23
+    * 形参：
+    * 1. 姓氏
+    * 2. 男生名字
+    * 3. 女生名字
+    * 4. 男生个数
+    * 5. 女生个数
+    * */
+    public static ArrayList<String> getInfos(ArrayList<String> familyNameList,
+                                             ArrayList<String> boyNameList,
+                                             ArrayList<String> girlNameList,
+                                             int boyCount,
+                                             int girlCount) {
+        // 1. 生成男生不重复的名字
+        HashSet<String> boyhs = new HashSet<>();
+        while (true) {
+            if (boyhs.size() >= boyCount) {
+                break;
+            }
+            // 随机
+            Collections.shuffle(familyNameList);
+            Collections.shuffle(boyNameList);
+            boyhs.add(familyNameList.get(0) + boyNameList.get(0));
+        }
+
+        // 2. 女生
+        HashSet<String> girlhs = new HashSet<>();
+        while (true) {
+            if (girlhs.size() >= girlCount) {
+                break;
+            }
+            // 随机
+            Collections.shuffle(familyNameList);
+            Collections.shuffle(girlNameList);
+            girlhs.add(familyNameList.get(0) + girlNameList.get(0));
+        }
+
+        // 3. 性别，年龄
+        // 男生年龄随机18-27
+        // 男生年龄随机18-25
+        ArrayList<String> list = new ArrayList<>();
+        Random r = new Random();
+        for (String str : boyhs) {
+            int age = r.nextInt(10) + 18;
+            list.add(str + "-男-" + age);
+        }
+        for (String str : girlhs) {
+            int age = r.nextInt(8) + 18;
+            list.add(str + "-女-" + age);
+        }
+        return list;
     }
 
     private static ArrayList<String> getData(String str, String regex, int index) {
