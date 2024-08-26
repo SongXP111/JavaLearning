@@ -1,4 +1,4 @@
-package com.xipeng.a04threadmethod5;
+package com.xipeng.a08threadmethod5;
 
 public class MyThread extends Thread {
 

@@ -1,4 +1,4 @@
-package com.xipeng.a04threadmethod2;
+package com.xipeng.a05threadmethod2;
 
 public class ThreadDemo {
     public static void main(String[] args) {

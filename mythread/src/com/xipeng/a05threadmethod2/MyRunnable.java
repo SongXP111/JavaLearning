@@ -1,4 +1,4 @@
-package com.xipeng.a04threadmethod2;
+package com.xipeng.a05threadmethod2;
 
 public class MyRunnable implements Runnable {
 

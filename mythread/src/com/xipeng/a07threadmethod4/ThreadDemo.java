@@ -1,7 +1,4 @@
-package com.xipeng.a04threadmethod4;
-
-import com.xipeng.a04threadmethod3.MyThread1;
-import com.xipeng.a04threadmethod3.MyThread2;
+package com.xipeng.a07threadmethod4;
 
 public class ThreadDemo {
     public static void main(String[] args) {
