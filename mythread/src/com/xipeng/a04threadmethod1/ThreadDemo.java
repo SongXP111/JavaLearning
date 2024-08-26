@@ -1,4 +1,4 @@
-package com.xipeng.a04threadmethod;
+package com.xipeng.a04threadmethod1;
 
 public class ThreadDemo {
     public static void main(String[] args) throws InterruptedException {
