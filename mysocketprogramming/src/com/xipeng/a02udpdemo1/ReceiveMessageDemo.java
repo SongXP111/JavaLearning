@@ -1,10 +1,9 @@
-package com.xipeng.a02udpdemo;
+package com.xipeng.a02udpdemo1;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.net.SocketException;
 
 public class ReceiveMessageDemo {
     public static void main(String[] args) throws IOException {
