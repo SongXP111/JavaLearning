@@ -28,7 +28,7 @@ public class SendMessageDemo {
                 break;
             }
             byte[] bytes = str.getBytes();
-            InetAddress address = InetAddress.getByName("127.0.0.1");
+            InetAddress address = InetAddress.getByName("127.0.0.1"); // 255.255.255.255就是UDP广播
             int port = 10086;
 
             dp = new DatagramPacket(bytes, bytes.length, address, port);
