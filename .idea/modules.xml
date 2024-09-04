@@ -16,6 +16,7 @@
       <module fileurl="file://$PROJECT_DIR$/day15/day15.iml" filepath="$PROJECT_DIR$/day15/day15.iml" />
       <module fileurl="file://$PROJECT_DIR$/doudizhu/doudizhu.iml" filepath="$PROJECT_DIR$/doudizhu/doudizhu.iml" />
       <module fileurl="file://$PROJECT_DIR$/myapi/myapi.iml" filepath="$PROJECT_DIR$/myapi/myapi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mydynamicproxy/mydynamicproxy.iml" filepath="$PROJECT_DIR$/mydynamicproxy/mydynamicproxy.iml" />
       <module fileurl="file://$PROJECT_DIR$/myexception/myexception.iml" filepath="$PROJECT_DIR$/myexception/myexception.iml" />
       <module fileurl="file://$PROJECT_DIR$/myfile/myfile.iml" filepath="$PROJECT_DIR$/myfile/myfile.iml" />
       <module fileurl="file://$PROJECT_DIR$/myfunction/myfunction.iml" filepath="$PROJECT_DIR$/myfunction/myfunction.iml" />
